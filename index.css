@@ -2,12 +2,15 @@
     margin: 0;
     padding: 0;
 }
+html,body{
+    height:100%;
+}
 
 .container{
-    width: 1345px;
-    height: 756px;
+    height: 100%;
     overflow: hidden;
     background: url("./timg.jpg") no-repeat;
+    background-size: 100% 100%;
 }
 
 .container .container-box{
