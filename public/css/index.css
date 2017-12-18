@@ -63,6 +63,28 @@ html,body{
     background: #fff;
 }
 
+
+@media screen and (max-width: 768px) {
+    .container .container-box{
+        position: absolute;
+        width: 292px;
+        height: 444px;
+        top: calc(50% - 222px);
+        left: calc(50% - 146px);
+        box-shadow: 0 0 10px #707070;
+        z-index: 12;
+    }
+    .container .container-box .box-left{
+        display: none;
+    }
+    .container .container-box .box-right{
+        width: 100%;
+        height: 100%;
+        float: left;
+        background: #fff;
+    }
+}
+
 .container .container-box .box-right .right-top{
     width: 100%;
     height: 45%;

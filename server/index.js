@@ -5,6 +5,8 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
     res.send({
         result: true
@@ -13,9 +15,7 @@ app.get('/', (req, res) => {
 
 app.post('/posy/', function(req, res) {
     res.send({
-        callBack: {
-            result: false
-        }
+        result: true
     })
 });
 

@@ -13,12 +13,9 @@ $(function () {
                 remember: remember
             },
             type: 'POST',
-            crossDomain: true,
             cache: false,
             contentType: 'application/json',
             processData: false,
-            dataType: 'jsonp',
-            jsonp: 'callBack',
             success: function (data) {
                 alert('success' + data);
             },
