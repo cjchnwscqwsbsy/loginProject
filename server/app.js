@@ -4,6 +4,7 @@
 const http = require('http');
 const express = require('express');
 var util = require('util');
+var bodyParser = require('body-parser');
 var moment = require('moment');
 
 //CORS统一设置
@@ -19,10 +20,7 @@ const route = require('./route');
 const app = express();
 
 app.use(allowCrossDomain);
-// catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    // const err = new Error('Not Found');
-    // err.status = 404;
     next(err);
 });
 
@@ -33,20 +31,8 @@ app.use(function (err, req, res, next) {
     console.log(req.toString());
     next();
 });
-// app.use(express.static('public'));
-//
-// app.get('/', function(req, res) {
-//     res.send({
-//         result: true
-//     })
-// });
-//
-// app.post('/posy/', function(req, res) {
-//     res.send({
-//         result: true
-//     })
-// });
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
 app.use('/', route);
 
 const server = http.createServer(app).listen(8081);
