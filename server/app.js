@@ -34,12 +34,12 @@ app.use(function (err, req, res, next) {
     next();
 });
 
-app.use(express.static('public'));
+app.use( express.static('public'));
 app.use(bodyParser.json({limit: '1mb'}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', route);
 
-const server = http.createServer(app).listen(8081);
+const server = http.createServer(app).listen(9527);
 server.on('listening', function () {
     const host = server.address().address;
     const port = server.address().port;
