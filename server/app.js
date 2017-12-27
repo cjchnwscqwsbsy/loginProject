@@ -4,6 +4,7 @@
 const http = require('http');
 const express = require('express');
 var util = require('util');
+var bodyParser = require('body-parser');
 var moment = require('moment');
 
 //CORS统一设置
@@ -32,7 +33,10 @@ app.use(function (err, req, res, next) {
     console.log(req.toString());
     next();
 });
+
 app.use(express.static('public'));
+app.use(bodyParser.json({limit: '1mb'}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', route);
 
 const server = http.createServer(app).listen(8081);
