@@ -8,18 +8,18 @@ var bodyParser = require('body-parser');
 var moment = require('moment');
 
 //CORS统一设置
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.header('Access-Control-Allow-Credentials','true');
-    next();
-};
+// var allowCrossDomain = function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type');
+//     res.header('Access-Control-Allow-Credentials','true');
+//     next();
+// };
 
 const route = require('./route');
 const app = express();
 
-app.use(allowCrossDomain);
+// app.use(allowCrossDomain);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(err);
