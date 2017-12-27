@@ -6,14 +6,15 @@ $(function () {
         var password = inputSelector[1].value;
         var remember = $(':input:checked').length;
         $.ajax({
-            url: 'http://127.0.0.1:8081/posy/',
-            data: {
+            url: '/posy',
+            data: JSON.stringify({
                 account: account,
                 password: password,
                 remember: remember
-            },
+            }),
             type: 'POST',
             cache: false,
+            dataType: 'json',
             contentType: 'application/json',
             processData: false,
             success: function (data) {

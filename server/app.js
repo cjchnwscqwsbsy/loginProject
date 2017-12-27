@@ -4,7 +4,6 @@
 const http = require('http');
 const express = require('express');
 var util = require('util');
-var bodyParser = require('body-parser');
 var moment = require('moment');
 
 //CORS统一设置
@@ -20,10 +19,12 @@ const route = require('./route');
 const app = express();
 
 app.use(allowCrossDomain);
+// catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(err);
 });
 
+//错误处理器,和其他中间件的唯一区别是4个参数
 app.use(function (err, req, res, next) {
     const url = req.originalUrl;
     const timestamp=moment().format("YYYY-MM-DD HH:mm:ss");
@@ -31,7 +32,6 @@ app.use(function (err, req, res, next) {
     console.log(req.toString());
     next();
 });
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use('/', route);
 
