@@ -20,7 +20,6 @@ var router = express.Router();
 //             }
 //         });
 //     });
-
 router.route("/posy")
     .post(function (req, rep, next) {
         console.log("账号：" + req.body.account);
