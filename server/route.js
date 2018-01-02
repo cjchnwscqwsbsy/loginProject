@@ -20,6 +20,10 @@ var router = express.Router();
 //             }
 //         });
 //     });
+// router.route("/")
+//     .get(function (req, rep, next) {
+//         console.log("cookies：" + req.cookie);
+//     });
 router.route("/posy")
     .post(function (req, rep, next) {
         console.log("账号：" + req.body.account);

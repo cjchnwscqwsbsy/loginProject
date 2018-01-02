@@ -5,7 +5,8 @@ const http = require('http');
 const express = require('express');
 var bodyParser = require('body-parser');
 var moment = require('moment');
-
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 //CORS统一设置
 // var allowCrossDomain = function(req, res, next) {
 //     res.header('Access-Control-Allow-Origin', '*');
@@ -18,11 +19,16 @@ var moment = require('moment');
 const route = require('./route');
 const app = express();
 
-app.use(express.static('public'));
+app.use(cookieParser());
 app.use(bodyParser.json({limit: '1mb'}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', route);
-
+app.use(express.static('public'));
+app.use(cookieSession({
+  name: 'abcdefg', // 手动设置session名
+  keys: ['aaa', 'bbb', 'ccc'], // 手动设置session密钥
+  maxAge: 24 * 60 * 60 * 1000 // 手动设置session过期时间，单位
+}));
 //错误处理器,和其他中间件的唯一区别是4个参数
 app.use(function (err, req, res, next) {
     const url = req.originalUrl;
