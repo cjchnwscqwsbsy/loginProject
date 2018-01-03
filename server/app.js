@@ -6,6 +6,7 @@ const express = require('express');
 var bodyParser = require('body-parser');
 var moment = require('moment');
 var cookieParser = require('cookie-parser');
+var proxy = require('express-http-proxy');
 var cookieSession = require('cookie-session');
 //CORS统一设置
 // var allowCrossDomain = function(req, res, next) {
@@ -22,6 +23,7 @@ const app = express();
 app.use(cookieParser());
 app.use(bodyParser.json({limit: '1mb'}));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use('/proxy', proxy('www.baidu.com'));
 app.use('/', route);
 app.use(express.static('public'));
 app.use(cookieSession({
